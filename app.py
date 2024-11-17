@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from appointments import read_appointments, write_appointment, is_time_valid, is_slot_available
 from datetime import datetime
+import unittest
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Required for session handling (flashing messages)
@@ -44,6 +45,14 @@ def format_time(value):
         return time_object.strftime("%I:%M %p")
     except ValueError:
         return value
+
+class testAppointmentApp:
+    ### This needs to be checked
+    def testNewSchedule(self):
+        testApppointment1 = ["John","11/20/24", "11:30"]
+        add_appointment(testApppointment1)
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

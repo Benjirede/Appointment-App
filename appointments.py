@@ -24,6 +24,15 @@ def write_appointment(name, date, time):
         appointment_id = str(uuid.uuid4())
         writer.writerow([appointment_id, name, date, time])
 
+def cancel_appointment(appointment_id):
+    with open(CSV_FILE, mode='a', newline='') as file:
+        writer = csv.writer(file)
+        appointments = read_appointments()
+        for i in appointments:
+            if appointments[i]==appointment_id:
+                writer.writerow([""])
+                break
+
 def is_time_valid(time):
     """Ensure the time is at a 15-minute interval."""
     time_object = datetime.strptime(time, "%H:%M")
