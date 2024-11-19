@@ -25,6 +25,7 @@ def write_appointment(name, date, time):
         writer.writerow([appointment_id, name, date, time])
 
 def cancel_appointment(appointment_id):
+    ### This needs to be checked
     with open(CSV_FILE, mode='a', newline='') as file:
         writer = csv.writer(file)
         appointments = read_appointments()
